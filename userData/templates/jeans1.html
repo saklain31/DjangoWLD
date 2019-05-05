@@ -1,0 +1,28 @@
+<form style="border:1px solid #ccc" method="POST">
+
+  <div class="container">
+    {% csrf_token %}
+    <p>Please choose your jeans1 attributes</p>
+    <hr>
+
+    <p>Input cloth</p>
+    <input type="radio" name="cloth" value="cloth1"> cloth1<br>
+    <input type="radio" name="cloth" value="cloth2"> cloth2<br>
+    <input type="radio" name="cloth" value="cloth3"> cloth3
+
+    <p>Input cut</p>
+    <input type="radio" name="cut" value="cut1"> cut1<br>
+    <input type="radio" name="cut" value="cut2"> cut2<br>
+    <input type="radio" name="cut" value="cut3"> cut3
+
+    <p>Input thread</p>
+    <input type="radio" name="thread" value="thread1"> thread1<br>
+    <input type="radio" name="thread" value="thread2"> thread2<br>
+    <input type="radio" name="thread" value="thread3"> thread3
+
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="submit" class="signupbtn">next</button>
+    </div>
+  </div>
+</form>
