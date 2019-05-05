@@ -6,8 +6,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class tempOrder(models.Model):
-    orderID = models.CharField(max_length=30) 
-    userID = models.CharField(max_length=30) 
+    orderID = models.CharField(max_length=30, primary_key=True)  
     gmail = models.EmailField()
     name = models.CharField(max_length=30)
     zipcode = models.CharField(max_length=30)

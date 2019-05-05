@@ -2,7 +2,7 @@ from django.shortcuts import render
 from userData.models import * 
 from django.http import HttpResponseRedirect, HttpResponse, HttpResponsePermanentRedirect
 
-
+import uuid
 # Create your views here.
 
 def saveTempOrder(request):
@@ -14,18 +14,26 @@ def saveTempOrder(request):
 		order.name = username
 		order.zipcode = zipcode
 		order.gmail = email
-		order.orderID = 'ord8181'
-		order.userID = 'user89110'
-		order.save()
 
-		return HttpResponsePermanentRedirect("/firstpair/")
+
+		uniqueId = uuid.uuid4()
+		order.orderID = uniqueId
+		order.save()
+		response = HttpResponsePermanentRedirect("/firstpair/")
+		response.set_cookie('orderID', uniqueId)
+		return response
 
 	return render(request, 'basicData.html')
 
 def getJeans1(request):
 	print(request.method)
+	value=""
 	if request.method == 'POST':
-		order = tempOrder.objects.filter(orderID='ord8181')
+		if 'orderID' in request.COOKIES:
+			value = request.COOKIES['orderID']
+			print("orderId=",value)
+
+		order = tempOrder.objects.filter(orderID = value)
 		print("hhhhh",order[0].zipcode,order[0].name)
 
 		order0 = order[0]
@@ -53,8 +61,14 @@ def getJeans1(request):
 
 def getJeans2(request):
 	print(request.method)
+	value=""
 	if request.method == 'POST':
-		order = tempOrder.objects.filter(orderID='ord8181')
+		if 'orderID' in request.COOKIES:
+			value = request.COOKIES['orderID']
+			print("orderId=",value)
+
+		order = tempOrder.objects.filter(orderID = value)
+
 		print("hhhhh",order[0].zipcode,order[0].name)
 
 		order0 = order[0]
