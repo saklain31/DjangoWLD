@@ -2,28 +2,53 @@ from django.shortcuts import render
 from userData.models import * 
 from django.http import HttpResponseRedirect, HttpResponse, HttpResponsePermanentRedirect
 
+
+from rest_framework import generics
+from .serializers import tempOrderSerializer
+from rest_framework import viewsets
+
+from rest_framework.views import APIView
+
+
 import uuid
 # Create your views here.
 
-def saveTempOrder(request):
-	if request.method == 'POST':    
-		username = request.POST.get("username")
-		email = request.POST.get("email")
-		zipcode = request.POST.get("zipcode")
-		order = tempOrder()
-		order.name = username
-		order.zipcode = zipcode
-		order.gmail = email
+
+class tempOrderViewSet(viewsets.ModelViewSet):
+	queryset = tempOrder.objects.all()
+	serializer_class = tempOrderSerializer
+
+class Test(APIView):
+	def saveTempOrder(request):
+		if request.method == 'POST':    
+			username = request.POST.get("username")
+			email = request.POST.get("email")
+			zipcode = request.POST.get("zipcode")
+			order = tempOrder()
+			order.name = username
+			order.zipcode = zipcode
+			order.gmail = email
 
 
-		uniqueId = uuid.uuid4()
-		order.orderID = uniqueId
-		order.save()
-		response = HttpResponsePermanentRedirect("/firstpair/")
-		response.set_cookie('orderID', uniqueId)
-		return response
+			uniqueId = uuid.uuid4()
+			order.orderID = uniqueId
+			order.save()
+			response = HttpResponse(uniqueId)#HttpResponsePermanentRedirect("/firstpair/")
+			response.set_cookie('orderID', uniqueId)
+			return render(request,"instruction.html",{'orderID': uniqueId})
 
-	return render(request, 'basicData.html')
+		return render(request, 'formFirstName.html')
+
+
+def instructionURL(request):
+	return render(request,'instruction.html')
+
+def chooseDenim(request):
+	return render(request,'ChooseDenim.html')
+
+def selectedDenim(request,denimID):
+
+	return render(request,'SelectedDenim.html',{'denimID': denimID})
 
 def getJeans1(request):
 	print(request.method)

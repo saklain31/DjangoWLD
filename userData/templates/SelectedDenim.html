@@ -1,0 +1,82 @@
+<HTML>
+	<header>
+		<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+		
+		<style>
+			a{
+				text-decoration:none;
+			}
+			.screen{
+				width:340px;
+				height:640px;
+				margin:auto;
+				background:white;
+				border:solid 1px grey;
+				overflow:auto;
+			}
+			.smallHeader{
+				text-align:center;
+				font-size:16px;
+				margin-top:12px;
+				font-weight:bold;
+				word-spacing:3px;
+			}
+			.bigHeader{
+				text-align:center;
+				font-size:28px;
+				margin:25px 40px 0 40px;
+				font-weight:bold;
+				word-spacing:0px;
+				letter-spacing:0px;
+				line-height:28px;
+			}
+			.denimContainer{
+				width:100%;
+				margin:20px 0px;
+				overflow:auto;
+			}
+			.denim{
+				width:100%;
+				text-align:center;
+				padding:45px 0px;
+				color:white;
+				font-size:17px;
+				font-weight:bold;
+				line-height:17px;
+			}
+
+		</style>
+	</header>
+	
+	<body style="font-family: 'Nunito', sans-serif;">
+		<div class="screen">
+ {% autoescape off %}
+<p>{{denimID}}</p>
+{% endautoescape %}
+			<div class="smallHeader">
+				First Pair &nbsp <span style="color:lightgrey;">Second Pair</span>
+			</div>
+			<div class="bigHeader">
+				Which denim would you like for your first pair of jeans?
+			</div>
+			<div class="denimContainer">
+				<a href="../denim/1"><div class="denim" style="background:lightblue">
+					#1 Indigo<br><span style="font-size:13px">Medium Weight | 99% cotton.</span>
+				</div></a>
+				<a href="../denim/2"><div class="denim" style="background:royalblue">
+					#2 Sky<br><span style="font-size:13px">Medium Weight | 99% cotton.</span>
+				</div></a>
+				<a href="../denim/3"><div class="denim" style="background:teal">
+					#3 Seagrean<br><span style="font-size:13px">Medium Weight | 99% cotton.</span>
+				</div></a>
+				<a href="../denim/4"><div class="denim" style="background:rgb(30,30,30)">
+					#4 Black<br><span style="font-size:13px">Medium Weight | 99% cotton.</span>
+				</div></a>
+				<a href="../denim/5"><div class="denim" style="background:darkGrey">
+					#5 CottonRaw<br><span style="font-size:13px">Medium Weight | 99% cotton.</span>
+				</div></a>
+				
+			</div>
+		</div>
+	</body>
+</HTML>

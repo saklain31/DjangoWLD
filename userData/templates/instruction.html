@@ -1,0 +1,56 @@
+<HTML>
+	<header>
+		<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+		
+		<style>
+			.screen{
+				width:340px;
+				height:640px;
+				background:white;
+				border:solid 1px grey;
+			}
+			.arrowHolder{
+				position:fixed;
+				top:520px;
+				left:250px;
+				width:50px;
+				height:50px;
+				border-radius:25px;
+				box-shadow:2px 4px 5px rgb(50,50,50);
+
+			}
+			.arrowHolder img{
+				width:100%;
+				height:100%:
+			}
+		</style>
+	</header>
+	
+	<body style="font-family: 'Nunito', sans-serif;">
+		<div class="screen">
+			<div style="width:70%;margin:auto;padding-top:25%;font-size:25px;line-height:30px;">
+	  	 {% autoescape off %}
+			   <script type="text/javascript">
+
+				   	var x="{{orderID}}";
+				   	window.localStorage.setItem("id",x);
+			console.log(x);
+	</script>
+
+	  <p>		
+	{{ orderID}}</p>
+{% endautoescape %}
+	
+			   
+
+				
+				<b>So here's how it works.</b><br><br>
+				<b>First,</b><br>you choose how you want your jeans to be.<br><br>
+				<b>Then,</b><br>we'll show you some tailors near you where you can go to get measured.
+			</div>
+			<a href="../chooseDenim"><div class="arrowHolder">
+				<img src="photos/arrowR.png">
+			</div></a>
+		</div>
+	</body>
+</HTML>

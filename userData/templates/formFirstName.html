@@ -1,0 +1,93 @@
+<HTML>
+    <header>
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <style>
+            a{
+                text-decoration:none;
+            }
+            .screen{
+                width:340px;
+                height:640px;
+                border:solid 1px grey;
+            }
+            .form{
+                width:65%;
+                margin:auto;
+                padding-top:30%;
+                font-weight:bold;
+                font-size:22px;
+                line-height:22px;
+            }
+            .textbox1{
+                width:100%;
+                font-size:18px;
+                padding:10px 0 0 0 ;
+                color:grey;
+                border:none;
+                background:none;
+                margin-bottom:45px;
+                border-bottom:solid 2px black;
+            }
+            .arrowHolder{
+                position:fixed;
+                top:520px;
+                left:250px;
+                width:50px;
+                height:50px;
+                border-radius:25px;
+                box-shadow:2px 4px 5px rgb(50,50,50);
+
+            }
+            .arrowHolder img{
+                width:100%;
+                height:100%;
+            }
+        </style>
+    </header>
+    
+    
+    <body style="font-family: 'Nunito', sans-serif;">
+            <div class="screen">
+                <div class="form">
+
+                    <form method = "POST">
+                        {% csrf_token %}
+
+                        Your first name<br>
+                        <input class="textbox1" style="border-bottom:solid 3px black;" type="text" name="username" required>
+                        Your email<br>
+                        <input class="textbox1" type="email" name="email" required>
+                        Your ZIP code<br>
+                        <input class="textbox1" style="border-bottom:dashed 2px black;" type="text" name= "zipcode" required>
+                        <input style="background:red" type="checkbox"> <span style="font-size:13px;color:rgb(100,100,100)">I want to give two pairs of jeans as a gift. (Gift cards never expire!)</span>
+                        <button class="arrowHolder" >
+                            <img src="../userData/templates/photos/arrowR.png">
+                        </button>
+                    </form>
+                </div>  
+            </div>
+            <script type="text/javascript">
+                function sendData()
+                {
+                    var name=document.getElementById('username').value;
+                    var email=document.getElementById('email').value;
+                    var zipcode=document.getElementById('zipcode').value;
+                    console.log(username+" "+email+" "+zipcode);
+                    axios.post('/', {
+                            username: name,
+                            email: email,
+                            zip: zipcode
+                        })
+                        .then(function (response) {
+                        console.log(response);
+                        })
+                        .catch(function (error) {
+                        console.log(error);
+                        });
+                }
+                
+            </script>   
+        </body>
+</HTML>
+

@@ -20,7 +20,11 @@ from userData.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('payments.urls')),
-    path('orderdata/', saveTempOrder),
+    #path('userData/', include('userData.urls')),
+    path('orderdata/', include('userData.urls')),
     path('firstpair/', getJeans1),
     path('secondpair/', getJeans2),
+    path('instruction/',instructionURL),
+    path('chooseDenim/',chooseDenim),
+    path('denim/<int:denimID>/',selectedDenim),
 ]
