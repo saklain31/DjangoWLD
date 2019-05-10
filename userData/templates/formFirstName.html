@@ -50,8 +50,7 @@
     <body style="font-family: 'Nunito', sans-serif;">
             <div class="screen">
                 <div class="form">
-
-                    <form method = "POST">
+                    <form name="myform" method = "POST">
                         {% csrf_token %}
 
                         Your first name<br>
@@ -61,10 +60,21 @@
                         Your ZIP code<br>
                         <input class="textbox1" style="border-bottom:dashed 2px black;" type="text" name= "zipcode" required>
                         <input style="background:red" type="checkbox"> <span style="font-size:13px;color:rgb(100,100,100)">I want to give two pairs of jeans as a gift. (Gift cards never expire!)</span>
-                        <button class="arrowHolder" >
-                            <img src="../userData/templates/photos/arrowR.png">
-                        </button>
+                        
+                        <a href="javascript:submitform()"><div class="arrowHolder">
+                            {% load static %}
+                            <img src="{% static "photos/arrowR.png" %}" alt="My image">
+                        </a>
+                    
                     </form>
+
+                    <script type="text/javascript">
+                        function submitform()
+                        {
+                            document.myform.submit();
+                        }
+                    </script>
+
                 </div>  
             </div>
             <script type="text/javascript">

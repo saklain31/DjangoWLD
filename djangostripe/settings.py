@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'payments.apps.PaymentsConfig',
     'userData.apps.UserdataConfig',
+    #'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
@@ -78,10 +79,17 @@ WSGI_APPLICATION = 'djangostripe.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'myproject',
+        'USER': 'myprojectuser',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
+
+
+
 
 
 # Password validation
@@ -122,7 +130,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
+#STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR, "static"),
+#    '/var/www/static/',
+#]
 
 STRIPE_SECRET_KEY = 'sk_test_spNXzKA4TOmeDBS8tRCuUhgr000PfdK44h'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_qdtIIPnmqwOQCqVBKpQcLNET005wZeYoA0'

@@ -30,16 +30,12 @@
 		<div class="screen">
 			<div style="width:70%;margin:auto;padding-top:25%;font-size:25px;line-height:30px;">
 	  	 {% autoescape off %}
-			   <script type="text/javascript">
-
-				   	var x="{{orderID}}";
-				   	window.localStorage.setItem("id",x);
+	    <script type="text/javascript">
+		   	var x="{{orderID}}";
+		   	window.localStorage.setItem("id",x);
 			console.log(x);
-	</script>
-
-	  <p>		
-	{{ orderID}}</p>
-{% endautoescape %}
+		</script>
+		{% endautoescape %}
 	
 			   
 
@@ -49,7 +45,8 @@
 				<b>Then,</b><br>we'll show you some tailors near you where you can go to get measured.
 			</div>
 			<a href="../chooseDenim"><div class="arrowHolder">
-				<img src="photos/arrowR.png">
+				{% load static %}
+				<img src="{% static "photos/arrowR.png" %}" alt="My image">
 			</div></a>
 		</div>
 	</body>

@@ -44,6 +44,21 @@
 				font-weight:bold;
 				line-height:17px;
 			}
+			.arrowHolder{
+				position:fixed;
+				top:520px;
+				left:250px;
+				width:50px;
+				z-index: 100;
+				height:50px;
+				border-radius:25px;
+				box-shadow:2px 4px 5px rgb(50,50,50);
+
+			}
+			.arrowHolder img{
+				width:100%;
+				height:100%:
+			}
 
 		</style>
 	</header>
@@ -73,18 +88,26 @@
 					#5 CottonRaw<br><span style="font-size:13px">Medium Weight | 99% cotton.</span>
 				</div>
 				
+
+				<a href="javascript:finalizeDenim()"><div class="arrowHolder">
+					{% load static %}
+					<img src="{% static "photos/arrowR.png" %}" alt="My image">
+				</div></a>
+
 			</div>
 		</div>
 	</body>
 
 	<script type="text/javascript">
-		function finalizeDenim(id)
+		var selectedDenim=-1;
+		function finalizeDenim()
 		{
-			window.location.href="../thread/"+id;
+			window.location.href="../chooseThread/"+selectedDenim;
 		}	
 
 		function selectDenim(id)
 		{
+			selectedDenim=id;
 			for(var i=1;i<=5;i++)
 			{
 
@@ -95,4 +118,6 @@
 			}
 		}
 	</script>
+
+	
 </HTML>

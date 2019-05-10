@@ -53,16 +53,29 @@ def instructionURL(request):
 def chooseDenim(request):
 	return render(request,'ChooseDenim.html')
 
-# def selectedDenim(request,denimID):
-# 	return render(request,'SelectedDenim.html',{'denimID': denimID})
-
-def chooseThread(request):
-	#save denim
+def chooseThread(request,denimID):
+	print("DENIM ID ",denimID)
 	return render(request,'ChooseThread.html')
 
-def chooseCut(request):
-	#save denim
+def chooseCut(request,threadID):
+	print("THREAD ID",threadID)
 	return render(request,'ChooseCut.html')
+
+
+
+# def chooseDenim2(request):
+# 	return render(request,'ChooseDenim2.html')
+
+# def chooseThread2(request,denimID):
+# 	#save denim
+# 	return render(request,'ChooseThread2.html')
+
+# def chooseCut2(request,threadID):
+# 	#save denim
+# 	return render(request,'ChooseCut2.html')
+
+
+
 
 # def selectedThread(request,ThreadID):
 # 	return render(request,'SelectedThread.html',{'ThreadID': ThreadID})

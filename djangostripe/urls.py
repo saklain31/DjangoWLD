@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+
 from userData.views import *
 
 urlpatterns = [
@@ -25,8 +28,9 @@ urlpatterns = [
     path('firstpair/', getJeans1),
     path('secondpair/', getJeans2),
     path('instruction/',instructionURL),
+    
     path('chooseDenim/',chooseDenim),
-    #path('denim/<int:denimID>/',selectedDenim),
     path('chooseThread/<int:denimID>',chooseThread),
-    #path('thread/<int:threadID>/',selectedThread),
-]
+    path('chooseCut/<int:threadID>',chooseCut),
+
+]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
