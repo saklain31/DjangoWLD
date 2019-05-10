@@ -3,9 +3,9 @@ from userData.models import *
 from django.http import HttpResponseRedirect, HttpResponse, HttpResponsePermanentRedirect
 
 
-from rest_framework import generics
-from .serializers import tempOrderSerializer
-from rest_framework import viewsets
+# from rest_framework import generics
+# from .serializers import tempOrderSerializer
+# from rest_framework import viewsets
 
 from rest_framework.views import APIView
 
@@ -14,9 +14,9 @@ import uuid
 # Create your views here.
 
 
-class tempOrderViewSet(viewsets.ModelViewSet):
-	queryset = tempOrder.objects.all()
-	serializer_class = tempOrderSerializer
+# class tempOrderViewSet(viewsets.ModelViewSet):
+# 	queryset = tempOrder.objects.all()
+# 	serializer_class = tempOrderSerializer
 
 class Test(APIView):
 	def saveTempOrder(request):
@@ -25,17 +25,24 @@ class Test(APIView):
 			email = request.POST.get("email")
 			zipcode = request.POST.get("zipcode")
 			order = tempOrder()
-			order.name = username
+			order.firstname = username
 			order.zipcode = zipcode
-			order.gmail = email
+			order.email = email
 
 
-			uniqueId = uuid.uuid4()
-			order.orderID = uniqueId
+			#uniqueId = uuid.uuid4()
+			#order.orderID = uniqueId
 			order.save()
-			response = HttpResponse(uniqueId)#HttpResponsePermanentRedirect("/firstpair/")
-			response.set_cookie('orderID', uniqueId)
-			return render(request,"instruction.html",{'orderID': uniqueId})
+			orderID = order.id+10000
+			print("row index ",orderID," Timestamp of creation ",order.created_at)
+			
+			order.orderID = orderID
+
+			order.save()
+
+			#response = HttpResponse("utiutuiutuitui")#HttpResponsePermanentRedirect("/firstpair/")
+			#response.set_cookie('orderID', 'wkkdshkashkjdahskdjha')
+			return render(request,"instruction.html",{'orderID': orderID})
 
 		return render(request, 'formFirstName.html')
 
@@ -46,9 +53,19 @@ def instructionURL(request):
 def chooseDenim(request):
 	return render(request,'ChooseDenim.html')
 
-def selectedDenim(request,denimID):
+# def selectedDenim(request,denimID):
+# 	return render(request,'SelectedDenim.html',{'denimID': denimID})
 
-	return render(request,'SelectedDenim.html',{'denimID': denimID})
+def chooseThread(request):
+	#save denim
+	return render(request,'ChooseThread.html')
+
+def chooseCut(request):
+	#save denim
+	return render(request,'ChooseCut.html')
+
+# def selectedThread(request,ThreadID):
+# 	return render(request,'SelectedThread.html',{'ThreadID': ThreadID})
 
 def getJeans1(request):
 	print(request.method)

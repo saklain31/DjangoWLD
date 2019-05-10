@@ -3,11 +3,11 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 
-from rest_framework import routers
+#from rest_framework import routers
 from userData.views import *
 
-router = routers.DefaultRouter()
-router.register(r'tempOrder', tempOrderViewSet)
+#router = routers.DefaultRouter()
+#router.register(r'tempOrder', tempOrderViewSet)
 
 urlpatterns = [
     #path(r'', include(router.urls)),

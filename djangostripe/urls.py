@@ -26,5 +26,7 @@ urlpatterns = [
     path('secondpair/', getJeans2),
     path('instruction/',instructionURL),
     path('chooseDenim/',chooseDenim),
-    path('denim/<int:denimID>/',selectedDenim),
+    #path('denim/<int:denimID>/',selectedDenim),
+    path('chooseThread/<int:denimID>',chooseThread),
+    #path('thread/<int:threadID>/',selectedThread),
 ]
